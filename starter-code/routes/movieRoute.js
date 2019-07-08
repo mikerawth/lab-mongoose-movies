@@ -6,7 +6,7 @@ const Movie = require('../models/Movie')
 router.get('/', (req, res, next) => {
   Movie.find()
     .then((allMovies) => {
-      res.render('movies', { movies: allMovies });
+      res.render('movies/index', { movies: allMovies });
     })
     .catch((err) => {
       next(err)
@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/new', (req, res, next) => {
-  res.render('createNewMovie')
+  res.render('movies/new')
 })
 
 router.post('/', (req, res, next) => {
@@ -30,7 +30,7 @@ router.post('/', (req, res, next) => {
 router.get('/details/:id', (req, res, next) => {
   Movie.findById(req.params.id)
     .then((selectedMovie) => {
-      res.render('movieDetails', { movie: selectedMovie });
+      res.render('movies/details', { movie: selectedMovie });
     })
     .catch((err) => {
       next(err)
@@ -40,7 +40,7 @@ router.get('/details/:id', (req, res, next) => {
 router.get('/edit/:id', (req, res, next) => {
   Movie.findById(req.params.id)
     .then((selectedMovie) => {
-      res.render('movieEdit', { movie: selectedMovie });
+      res.render('movies/edit', { movie: selectedMovie });
     })
     .catch((err) => {
       next(err)
