@@ -10,7 +10,18 @@
   <label>Plot:</label>
   <input type="text" name="plot">
 
-  <button>Submit</button>
+  <label>Stars:</label>
+  <select name="stars">
+
+    {{#each celebrities}}
+
+    <option value="{{this._id}}">{{this.name}}</option>
+
+    {{/each}}
+
+  </select>
+  <br>
+  <button>Submit!!</button>
 </form>
 
 <a href="/movies">Go Back</a>

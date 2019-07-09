@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Celebrity = require('../models/Celebrity')
 const Movie = require('../models/Movie')
 
 /* GET home page */
@@ -14,7 +15,17 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/new', (req, res, next) => {
-  res.render('movies/new')
+
+  Celebrity.find()
+    .then((allCelebrities) => {
+      res.render('movies/new', { celebrities: allCelebrities })
+    })
+    .catch((err) => {
+      next(err)
+    })
+
+
+
 })
 
 router.post('/', (req, res, next) => {
@@ -28,7 +39,7 @@ router.post('/', (req, res, next) => {
 })
 
 router.get('/details/:id', (req, res, next) => {
-  Movie.findById(req.params.id)
+  Movie.findById(req.params.id).populate('stars')
     .then((selectedMovie) => {
       res.render('movies/details', { movie: selectedMovie });
     })
@@ -40,7 +51,13 @@ router.get('/details/:id', (req, res, next) => {
 router.get('/edit/:id', (req, res, next) => {
   Movie.findById(req.params.id)
     .then((selectedMovie) => {
-      res.render('movies/edit', { movie: selectedMovie });
+      Celebrity.find()
+        .then((allCelebrities) => {
+          res.render('movies/edit', { movie: selectedMovie, celebrities: allCelebrities });
+        })
+        .catch((err) => {
+          next(err)
+        })
     })
     .catch((err) => {
       next(err)
