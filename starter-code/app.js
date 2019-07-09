@@ -46,7 +46,6 @@ app.use(require('node-sass-middleware')({
   sourceMap: true
 }));
 
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
@@ -61,13 +60,8 @@ app.use(session({
   saveUninitialized: true
 }));
 
-
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-
-
 
 passport.serializeUser((user, cb) => {
   cb(null, user._id);
@@ -79,8 +73,6 @@ passport.deserializeUser((id, cb) => {
     cb(null, user);
   });
 });
-
-
 
 app.use(flash());
 
