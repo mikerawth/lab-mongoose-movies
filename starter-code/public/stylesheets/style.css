@@ -6,7 +6,9 @@ body {
   color: #dbdbdb;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   margin: 0;
-  padding: 75px 0 0 0; }
+  padding: 75px 0 0 0;
+  display: flex;
+  justify-content: center; }
 
 header {
   display: flex;
@@ -34,5 +36,18 @@ a {
   top: 0;
   left: 0;
   width: 100%; }
+
+.content {
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 400px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 50px; }
+
+.message {
+  align-self: flex-end; }
 
 /*# sourceMappingURL=style.css.map */

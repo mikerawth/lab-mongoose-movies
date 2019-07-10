@@ -3,19 +3,13 @@
 
 <form action="/login" method="POST">
   <label>Username</label>
-  <input type="text" name="theUsername">
+  <input type="text" name="username">
 
   <label>Password</label>
-  <input type="text" name="thePassword">
+  <input type="text" name="password">
 
   <button>Login</button>
 
-  {{#if err}}
-  <div>{{err}}</div>
-  {{/if}}
 
-  {{#if yay}}
-  <div>{{yay}}</div>
-  {{/if}}
 
 </form>
